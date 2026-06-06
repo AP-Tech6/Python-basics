@@ -1,0 +1,63 @@
+in single number problem to remove duplicate elemnt do xor of the numbers
+then we will get the number which is not repeated
+
+
+program to find xor of all the elements in the array in python
+def find_single_number(nums):
+    result = 0
+    for num in nums:
+        result ^= num  # XOR operation
+    return result
+
+program to find largest elemnt in the array in python
+the brute force approach is to sort the array and return the last element 
+but it will take O(n log n) time complexity
+we can also use a single pass approach to find the largest element in O(n) time complexity
+
+def find_largest_number(nums):
+    if not nums:
+        return None
+    largest = nums[0]
+    for num in nums[1:]:
+        if num > largest:
+            largest = num
+    return largest
+
+Given an integer n, return true if it is a power of two. Otherwise, return false.
+An integer n is a power of two, if there exists an integer x such that n == 2**x.//
+//code
+
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        if n<1:
+            return False
+        while n:
+            if n==1:
+                return True
+            elif n%2!=0:
+                return False
+            else:
+                n=n//2    
+
+
+  or
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+     if n < 1:
+            return False
+        while n > 1:
+            if n & 1:
+                return False
+            n = n >> 1
+        return True
+ or
+ i need a code that gives o(1) time complexity to check if a number is a power of two or not
+provide code 
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+     if n < 1:
+        return False
+     if n&(n-1)==0:
+        return True
+     else:
+        return False                                

@@ -1,0 +1,61 @@
+Difference Between Subarray and Subsequence 
+
+
+Given:
+
+[1,2,3,4]
+1. Subarray
+A subarray means:
+
+✅ continuous elements
+✅ elements must stay together
+
+Examples:
+
+[1]
+[1,2]
+[1,2,3]
+[2]
+[2,3]
+[2,3,4]
+[3]
+[3,4]
+[4]
+[1,2,3,4]
+[]
+❌ Not subarray:
+
+[1,3]
+[1,4]
+because elements are not continuous.
+
+2. Subsequence
+A subsequence means:
+
+✅ order should remain same
+❌ continuity not required
+
+Examples:
+
+[1]
+[2]
+[1,3]
+[1,4]
+[1,2,4]
+[2,4]
+[1,2,3]
+[1,3,4]
+[1,2,3,4]
+[]
+
+Sliding Window
+Sliding window is mainly used for:
+
+✅ subarrays(not all)
+✅ contiguous parts of array/string
+
+Because window moves continuously.
+
+note 
+subarray and substring are same 
+while subsequence used for recursion (not all)

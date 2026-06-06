@@ -1,0 +1,36 @@
+Rules of Identifiers in Python
+Identifiers are names used for variables, functions, classes, etc.
+
+Rules:
+1.  Identifier can contain:
+    Letters (A–Z, a–z)
+    Digits (0–9)
+    Underscore (_)
+Example:
+name1
+total_marks  
+
+2.identifier cannot start with a digit.
+Correct:
+age1
+Wrong:
+1age
+
+3.Special symbols are not allowed except underscore (_).
+Wrong:
+total@
+marks#
+
+4.Keywords cannot be used as identifiers.
+Wrong:
+class = 10
+if = 5
+
+5.Identifiers are case-sensitive.
+Example:
+name
+Name
+NAME
+All are different.
+
+6
