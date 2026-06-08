@@ -23,7 +23,7 @@ class Solution:
 
 
 
- //remove atmost character to make palindrome
+ #remove atmost character to make palindrome
 
  class Solution:
     def validPalindrome(self, s: str) -> bool:

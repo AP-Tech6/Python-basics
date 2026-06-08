@@ -8,7 +8,8 @@ if l:
 print(l)
 
 
-///from typing import List
+///from typing 
+import List
 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:

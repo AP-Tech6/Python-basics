@@ -12,7 +12,8 @@ print(m)
 
 
 #avg 643
-#note subarrya,subsequence => sliding window problems
+#note subarray,subsequence => sliding window problems
+#to find length each point upper limit-lowerlimit+1
 
 class Solution:
     def findMaxAverage(self, nums: List[int], k: int) -> float:

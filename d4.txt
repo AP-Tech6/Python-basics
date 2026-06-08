@@ -59,3 +59,59 @@ Because window moves continuously.
 note 
 subarray and substring are same 
 while subsequence used for recursion (not all)
+
+
+
+
+i = m // col
+j = m % col
+Concept
+This converts:
+1D index → 2D matrix position
+Used when treating matrix as straight line array.
+
+Example
+Matrix:
+
+[
+ [1,2,3],
+ [4,5,6],
+ [7,8,9]
+]
+Rows:
+3
+Columns:
+3
+Suppose:
+
+m = 5
+Now:
+
+i = 5 // 3 = 1
+j = 5 % 3 = 2
+So:
+
+matrix[1][2] = 6
+Straight Line View
+index : value
+
+0 -> 1
+1 -> 2
+2 -> 3
+3 -> 4
+4 -> 5
+5 -> 6
+6 -> 7
+7 -> 8
+8 -> 9
+
+
+
+koko banana problm
+
+                3     6       7      11      total time    is it possible
+1 banana         3/1   6/1      7/1    11/1      27              np              
+2           3/2(roundit) 3       4       6       15               np
+3            1          2        3       4        10               np    
+4           1         2         2        3        8             possible    
+from 4 to onwards possible 

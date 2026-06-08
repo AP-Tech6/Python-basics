@@ -1,0 +1,268 @@
+Functions in Python
+syntax 
+
+def function_name():
+    # code
+General Syntax
+def function_name(parameters):
+    # function body
+def → keyword used to create function
+
+function_name → name of function
+
+parameters → inputs to function
+
+indented block → code inside function
+
+
+Function Terms
+Parameter
+Variable written inside function definition.
+
+def add(a, b):
+Here:
+
+a, b
+are parameters.
+
+They act like placeholders.
+
+Argument
+Actual values passed during function call.
+
+add(2, 3)
+Here:
+
+2, 3
+are arguments.
+
+def add(a, b):   # a,b -> parameters
+
+    print(a + b)
+
+add(2, 3)        # 2,3 -> arguments
+
+Default Arguments
+A default argument already has a value inside function definition.
+
+Syntax
+def function_name(parameter=value):
+Example
+def greet(name="Guest"):
+
+    print("Hello", name)
+Call:
+greet()
+Output:
+Hello Guest
+
+If value is given:
+greet("Asish")
+Output:
+Hello Asish
+
+
+Keyword Arguments
+Passing values using parameter names.
+Example
+def student(name, age):
+    print(name, age)
+Function call:
+student(age=18, name="Asish")
+Output:
+Asish 18
+Here:
+name=age=are keywords.
+
+Order does not matter in keyword arguments.
+Combined Example
+def details(name, age=18):
+    print(name, age)
+details("Asish")
+Output:
+Asish 18
+details("Asish", 20)
+Output:
+Asish 20
+
+
+Positional Arguments
+Arguments passed according to their position.
+
+Example
+def student(name, age):
+
+    print(name, age)
+Function call:
+student("Asish", 18)
+Output:
+Asish 18
+Here:
+"Asish" goes to name
+18 goes to age
+because arguments are matched by position.
+
+*args in Python
+*args is used when a function can take:
+multiple arguments
+Syntax
+def function_name(*args):
+args stores values as:tuple
+Example 1
+def add(*args):
+    print(args)
+add(1, 2, 3)
+Output:
+(1, 2, 3)
+
+Easy Understanding
+Without *args:
+def add(a,b):
+Only 2 values allowed.
+
+With *args:
+def add(*args):
+Any number of values allowed.
+
+
+**kwargs in Python
+**kwargs is used when a function can take:
+multiple keyword arguments
+Syntax
+def function_name(**kwargs):
+kwargs stores values as: dictionary
+Example 1
+def student(**kwargs):
+    print(kwargs)
+student(name="Asish", age=18)
+Output:
+{'name': 'Asish', 'age': 18}
+Example 2
+def student(**kwargs):
+    for key, value in kwargs.items():
+        print(key, value)
+student(name="Asish", age=18, place="Kerala")
+Output:
+name Asish
+age 18
+place Kerala
+
+Recursion in Python
+Recursion means:a function calling itself
+Syntax
+def function_name():
+    condition
+    function_name()
+Important Parts
+Base Case
+Condition to stop recursion.
+
+Without base case:
+infinite function calls will happen.
+
+Recursive Call
+Function calling itself.
+
+Example 1
+def hello(n):
+
+    if n == 0:
+        return
+
+    print("Hello")
+
+    hello(n-1)
+
+hello(3)
+Output
+Hello
+Hello
+Hello
+Working
+hello(3)
+prints:
+Hello
+then calls:
+hello(2)
+Again:
+Hello
+then:
+hello(1)
+Again:
+Hello
+then:
+hello(0)
+Base case reached:
+return
+Stops recursion.
+
+
+If there is no base condition in recursion:
+function keeps calling itself forever
+This causes:
+RecursionError
+Example Without Base Case
+def hello():
+    print("Hello")
+    hello()
+
+hello()
+What Happens
+hello()
+→ hello()
+→ hello()
+→ hello()
+→ ...
+Infinite calls happen.
+Python memory becomes full.
+Then error comes:
+RecursionError: maximum recursion depth exceeded
+
+
+Head Recursion
+Definition
+In head recursion:
+recursive function call happens first
+then remaining statements execute.
+Example
+def count(n):
+    if n == 0:
+        return
+    count(n-1)
+    print(n)
+count(5)
+Output
+1
+2
+3
+4
+5
+Explanation
+First recursion goes till:
+n = 0
+Then while returning:
+1 2 3 4 5
+gets printed.
+
+Tail Recursion
+Definition
+In tail recursion:
+recursive function call happens last
+after all statements execute.
+
+Example
+def count(n):
+    if n == 0:
+        return
+    print(n)
+    count(n-1)
+count(5)
+Output
+5
+4
+3
+2
+1
+
+function call at top=>head recursion
+function call at down=>tail recursion
