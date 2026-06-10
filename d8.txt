@@ -1,0 +1,615 @@
+object oriented programming in python  
+
+4 Pillars of OOP (Object-Oriented Programming) in Python
+1. Encapsulation
+Definition: Binding data (variables) and methods (functions) into a single unit 
+(class) and restricting direct access to data.
+
+2. Abstraction
+Definition: Hiding implementation details 
+and showing only essential features to the user.
+
+3. Inheritance
+Definition: One class acquires properties and methods of another class.
+
+4.Polymorphism
+Definition: Same method name can behave differently for different objects.
+
+
+Basics of OOPS
+1. Class
+A class is a blueprint or template for creating objects.
+
+class Student:
+    pass
+Here, Student is a class.
+
+
+
+2. Object
+An object is an instance of a class.
+
+class Student:
+    pass
+
+s1 = Student()
+s2 = Student()
+Here:
+
+s1, s2
+are objects of the Student class.
+
+
+3.3. Method
+A method is a function defined inside a class.
+
+class Student:
+
+    def display(self):
+        print("Hello")
+display() is a method.
+
+Calling the method:
+
+s = Student()
+s.display()
+Output:
+
+Hello
+
+4.__init__()
+__init__() is a constructor.
+
+It is automatically called when an object is created.
+
+Used to initialize object variables.
+
+class Student:
+
+    def __init__(self):
+        print("Constructor Called")
+
+s = Student()
+Output:
+Constructor Called
+
+
+5.self
+self refers to the current object of the class.
+
+It is used to access instance variables and methods.
+
+class Student:
+
+    def show(self):
+        print("Hello")
+
+s = Student()
+s.show()
+Python internally does:
+
+Student.show(s)
+Here, self = s.
+
+
+note
+Python does not have a this keyword like Java or C++.
+In Python, self works like this.
+
+6.super()
+super() is used to access methods or constructors of the parent class.
+It is used to refer parent class
+Example
+class Animal:
+
+    def __init__(self):
+        print("Animal Constructor")
+
+class Dog(Animal):
+
+    def __init__(self):
+        super().__init__()
+        print("Dog Constructor")
+
+d = Dog()
+Output:
+
+Animal Constructor
+Dog Constructor
+
+Encapsulation in Python
+Definition:
+Encapsulation is the process of binding data (variables) and methods (functions) into a single unit (class) and restricting direct access to data.
+
+Purpose:
+Data hiding
+Data security
+Controlled access to variables
+
+Example
+class Student:
+    def __init__(self):
+        self.__marks = 90   # private variable
+
+    def get_marks(self):
+        return self.__marks
+s = Student()
+print(s.get_marks())
+Output:
+90
+
+Why Encapsulation?
+Without encapsulation:
+class Student:
+    def __init__(self):
+        self.marks = 90
+
+s = Student()
+s.marks = -100
+Anyone can change the value.
+
+With encapsulation:
+class Student:
+    def __init__(self):
+        self.__marks = 90
+Direct access is restricted.
+
+Access Modifiers in Encapsulation (Python)
+Access modifiers control how class variables and methods can be accessed.
+
+1. Public Member
+Can be accessed from anywhere.
+No special symbol is used.
+
+class Student:
+    def __init__(self):
+        self.name = "Asish"
+
+s = Student()
+print(s.name)
+Output:
+Asish
+2. Protected Member
+Should be accessed only within the class and its subclasses.
+Uses a single underscore _.
+
+class Student:
+    def __init__(self):
+        self._marks = 90
+
+class Child(Student):
+    def show(self):
+        print(self._marks)
+
+c = Child()
+c.show()
+Output:
+90
+3. Private Member
+Cannot be accessed directly outside the class.
+
+Uses double underscore __.
+
+class Student:
+    def __init__(self):
+        self.__marks = 90
+
+    def get_marks(self):
+        return self.__marks
+
+s = Student()
+print(s.get_marks())
+Output:
+90
+Trying:
+print(s.__marks)
+Gives:
+AttributeError
+
+
+Inheritance in Python
+Definition:
+Inheritance is the process by which one class acquires 
+the properties and methods of another class.
+
+Purpose: Code Reusability
+
+class Animal:
+    def sound(self):
+        print("Animal Sound")
+
+class Dog(Animal):
+    pass
+
+d = Dog()
+d.sound()
+Output:
+
+Animal Sound
+Types of Inheritance
+1. Single Inheritance
+One child inherits from one parent.
+
+class Parent:
+    def show(self):
+        print("Parent")
+
+class Child(Parent):
+    pass
+
+c = Child()
+c.show()
+Output:
+
+Parent
+2. Multiple Inheritance
+One child inherits from multiple parents.
+
+class Father:
+    def father(self):
+        print("Father")
+
+class Mother:
+    def mother(self):
+        print("Mother")
+
+class Child(Father, Mother):
+    pass
+
+c = Child()
+c.father()
+c.mother()
+Output:
+
+Father
+Mother
+3. Multilevel Inheritance
+A class inherits from a class that already inherits from another class.
+
+class Grandparent:
+    def gp(self):
+        print("Grandparent")
+
+class Parent(Grandparent):
+    pass
+
+class Child(Parent):
+    pass
+
+c = Child()
+c.gp()
+Output:
+
+Grandparent
+4. Hierarchical Inheritance
+Multiple child classes inherit from the same parent.
+
+class Parent:
+    def show(self):
+        print("Parent")
+
+class Child1(Parent):
+    pass
+
+class Child2(Parent):
+    pass
+
+c1 = Child1()
+c2 = Child2()
+
+c1.show()
+c2.show()
+Output:
+
+Parent
+Parent
+5. Hybrid Inheritance
+Combination of two or more inheritance types.
+
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(A):
+    pass
+
+class D(B, C):
+    pass
+This combines hierarchical and multiple inheritance.
+
+Single       -> 1 Parent, 1 Child
+Multiple     -> Many Parents, 1 Child
+Multilevel   -> Chain
+Hierarchical -> Tree
+Hybrid       -> Mix
+
+Polymorphism:
+
+Definition:
+Polymorphism means "many forms". 
+The same method or function can behave differently for different objects.
+Purpose: Flexibility and code reusability.
+
+Example
+class Dog:
+    def sound(self):
+        print("Bark")
+
+class Cat:
+    def sound(self):
+        print("Meow")
+
+d = Dog()
+c = Cat()
+
+d.sound()
+c.sound()
+Output:
+Bark
+Meow
+Same method name sound(), different behavior.
+
+Types of Polymorphism
+1. Compile-Time Polymorphism (Method Overloading)
+Python does not support true method overloading, but it can be achieved using default arguments.
+class Math:
+    def add(self, a, b=0):
+        print(a + b)
+
+m = Math()
+m.add(10)
+m.add(10, 20)
+Output:
+10
+30
+
+2. Run-Time Polymorphism (Method Overriding)
+A child class provides its own implementation of a method already defined in the parent class.
+
+class Animal:
+    def sound(self):
+        print("Animal Sound")
+
+class Dog(Animal):
+    def sound(self):
+        print("Bark")
+
+d = Dog()
+d.sound()
+Output:
+Bark
+Here, Dog overrides the parent's sound() method.
+
+Example of Runtime Polymorphism
+class Animal:
+    def sound(self):
+        print("Animal Sound")
+
+class Dog(Animal):
+    def sound(self):
+        print("Bark")
+
+class Cat(Animal):
+    def sound(self):
+        print("Meow")
+
+animals = [Dog(), Cat()]
+for a in animals:
+    a.sound()
+Output:
+Bark
+Meow
+Same method:
+sound()
+Different behavior depending on the object.
+
+In Python:
+class Math:
+    def add(self, a, b):
+        print(a+b)
+
+    def add(self, a, b, c):
+        print(a+b+c)
+Python keeps only the last definition.
+m = Math()
+m.add(1, 2)
+Error:
+TypeError
+because the first add() is overwritten.
+
+Operator Overloading
+Definition:
+Operator overloading allows operators (+, -, *, ==, etc.) to have different meanings for user-defined objects.
+Python provides special methods called magic methods (dunder methods).
+
+Example
+class Student:
+
+    def __init__(self, marks):
+        self.marks = marks
+
+    def __add__(self, other):
+        return self.marks + other.marks
+
+s1 = Student(50)
+s2 = Student(40)
+
+print(s1 + s2)
+Output:
+90
+Here:
+s1 + s2
+internally calls:
+
+s1.__add__(s2)
+Common Operator Overloading Methods
+Operator	Method
++	__add__()
+-	__sub__()
+*	__mul__()
+/	__truediv__()
+==	__eq__()
+<	__lt__()
+>	__gt__()
+
+
+
+Abstraction
+Definition:
+Abstraction means hiding implementation details and 
+showing only the essential features to the user.
+The user knows what to do, not how it is done.
+
+Abstraction using Abstract Class
+from abc import ABC, abstractmethod
+class Vehicle(ABC):
+    @abstractmethod
+    def start(self):
+        pass
+class Car(Vehicle):
+    def start(self):
+        print("Car Started")
+c = Car()
+c.start()
+Output:
+Car Started
+
+
+Linked List:-
+Does Python Support Pointers?
+Short Answer: No, Python does not have pointers like C or C++.
+
+Real-Life Applications of Linked List//tree,graph wanted too
+1. Music Playlist
+2. Browser History
+3.Image Viewer
+4.undo/redo operation
+
+Definition:
+A Linked List is a linear data structure where elements (nodes) 
+are connected using pointers/references.
+
+Each node contains:
+Data
+Address (Reference) of the next node
+
+creating a linkedlist
+class Node:
+
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+head=Node(10)
+head.next=Node(20)
+head.next.next=Node(30)
+
+temp=head
+while temp:
+    print(temp.data,end="")
+    temp=temp.next
+
+temp = head
+while temp.next:
+    print(temp.data)
+    temp = temp.next
+
+
+Traversal → use while temp:
+Finding last node → use while temp.next:    
+
+
+floyd hare and tortoise algorithm :to detect cycles in linkedlist
+fast will jump 2 step
+slow will jump 1 step
+when fast finishes ,the slow reaches half of nodes
+
+Definition
+Slow (Tortoise) moves 1 step at a time.
+
+Fast (Hare) moves 2 steps at a time.
+
+When Fast reaches the end, Slow reaches the middle.
+
+Visualization
+1 -> 2 -> 3 -> 4 -> 5
+S
+F
+
+Step 1:
+1 -> 2 -> 3 -> 4 -> 5
+     S
+         F
+
+Step 2:
+1 -> 2 -> 3 -> 4 -> 5
+         S
+                 F
+
+Fast reaches end.
+Slow is at 3 (middle).
+Code
+slow = head
+fast = head
+while fast and fast.next:
+    slow = slow.next
+    fast = fast.next.next
+
+return slow
+
+Uses of Hare and Tortoise
+Find middle node of a linked list.
+Detect a cycle in a linked list.
+Find the starting point of a cycle.
+Find the nth node from the end.
+
+Interview Explanation
+In the Hare and Tortoise algorithm, the slow pointer moves one node at a time and the fast pointer moves two nodes at a time. When the fast pointer reaches the end of the linked list, the slow pointer will be at the middle node. This technique is commonly
+ used to find the middle element and detect cycles in linked list
+
+show cases of odd and even no 
+
+ChatGPT3:18 PM
+Odd Number of Nodes
+1 -> 2 -> 3 -> 4 -> 5
+Step	Slow	Fast
+Start	1	1
+1	2	3
+2	3	5
+Fast reaches the last node.
+
+Middle = 3
+Output:
+3 -> 4 -> 5
+Even Number of Nodes
+1 -> 2 -> 3 -> 4 -> 5 -> 6
+Step	Slow	Fast
+Start	1	1
+1	2	3
+2	3	5
+3	4	None
+Fast reaches the end.
+
+Middle = 4
+Output:
+
+4 -> 5 -> 6
+Why does it return 4 for even nodes?
+For an even-length list, there are two middle nodes:
+
+1 -> 2 -> 3 -> 4 -> 5 -> 6
+          ↑    ↑
+       middle1 middle2
+The standard Hare & Tortoise algorithm returns the second middle node (4).
+when fast and slow meets at a point then cycle detects.
+
+
+
+
+
+
+
+
+
+
